@@ -65,7 +65,8 @@ def train(
         accumulate=1,
         multi_scale=False,
         freeze_backbone=False,
-        transfer=False  # Transfer learning (train only YOLO layers)
+        transfer=False,  # Transfer learning (train only YOLO layers)
+        augment=False
 ):
     init_seeds()
     weights = 'weights' + os.sep
@@ -140,7 +141,7 @@ def train(
     dataset = LoadImagesAndLabels(train_path,
                                   img_size,
                                   batch_size,
-                                  augment=True,
+                                  augment=augment,
                                   rect=False,
                                   multi_scale=multi_scale)
 
